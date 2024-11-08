@@ -1,0 +1,21 @@
+.HangmanGame_Container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    height: 80%;
+}
+
+@media screen and (max-width: 422px) {
+    .HangmanGame_Container {
+        flex-direction: column;
+    }
+}
+
+@media screen and (min-width: 510px) {
+    #dualCol-flex {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+}

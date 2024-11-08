@@ -1,0 +1,18 @@
+.GameOver {
+    font-size: 3rem;
+    margin-top: 9px;
+}
+
+.winningWord {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: black;
+    text-decoration: underline;
+    text-decoration-color: red;
+}
+
+@media screen and (max-width: 422px) {
+    .GameOver {
+        width: 78%;
+    }
+}

@@ -1,0 +1,61 @@
+.guessesDisplay{
+    height: 200px;
+    width: 208px;
+    border: dotted;
+    padding: 5px;
+}
+
+.wrongGuesses {
+    font-style: oblique;
+    background: linear-gradient(220deg, #fdbb2d, #22c1c3);
+    border-radius: 4px;
+    color: black;
+    padding: 6px;
+    margin: 3px;
+    font-weight: bold;
+    text-transform: capitalize;
+    display: inline-block;
+    min-width: 17px;
+    box-shadow: #0000ff30 3px 2px;
+    font-size: 2rem;
+}
+
+/* Keyframes for the pop animation */
+.pop-enter {
+    transform: scale(0);
+}
+    
+.pop-exit {
+    transform: scale(1);
+}
+  
+.pop-exit-active {
+    transform: scale(0);
+    transition: transform 500ms ease-in-out;
+}
+
+@media screen and (max-width: 422px) {
+    .guessesDisplay {
+        width: 59%;
+        height: 216px;
+    }  
+}
+
+@media screen and (min-width: 1000px) {
+    .guessesDisplay {
+        width: 300px;
+        height: 308px;
+    }
+}
+
+@media screen and (min-width: 3000px) and (min-height:1860px) {
+    .guessesDisplay {
+        width: 400px;
+        height: 408px;
+    }
+
+    .wrongGuesses {
+        font-size: 44px;
+        min-width: 35px;
+    }
+}

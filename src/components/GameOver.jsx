@@ -21,15 +21,21 @@ function GameOver({ gameStatus, winningWord }) {
   "Oh No! The noose found Hangman's Neck! "];
       
   return (
-      <div className="GameOver">
-          <h5 id='gameOverMsg'>{ gameStatus ? `${msg[0]}`  : (
-            <>
-              {`${msg[1]} \n The word was `}
-              <span className='winningWord'>{winningWord.charAt(0).toUpperCase() + winningWord.slice(1)}</span>
-              {" Go on and have another try"}
-            </>
-          )}</h5>
-      </div>
+    <div className="GameOver">
+      <p id="gameOverMsg" style={{ fontSize: "1.8rem"}}>
+        {gameStatus ? (
+          `${msg[0]}`
+        ) : (
+          <>
+            {`${msg[1]} \n The word was `}
+            <span className="winningWord">
+              {winningWord.charAt(0).toUpperCase() + winningWord.slice(1)}
+            </span>
+            {". Go on and have another try"}
+          </>
+        )}
+      </p>
+    </div>
   );
 }
 

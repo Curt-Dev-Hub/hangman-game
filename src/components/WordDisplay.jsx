@@ -7,19 +7,15 @@ and update its display accordingly.
 
 props: takes a chosen "word" from the WordSelector component in form of a string
 
-state: none
-
 */
 
 import '../assets/WordDisplay.css';
 
 export default function WordDisplay( { correctGuesses, word }) {
-    // const { word } = useContext(WordContext)
-    // begin rendering UI elements once a word has been received from WordProvider via the WordSelector component
+
     if(word) {
         const chosenWord = word.split("")
-        console.log(chosenWord)
-        // display "-" characters on UI if guessedLetters array is empty
+        
         if(correctGuesses.length < 1) {
             return (
                 <div className="wordDisplay">
@@ -43,10 +39,8 @@ export default function WordDisplay( { correctGuesses, word }) {
                     {chosenWord.map((el, idx) => {
                         // Check letter is in guessedLetters
                         if (correctGuesses.includes(el.toLowerCase())) {
-                            // If it is, display the letter
                             return <span className="displayLetter" key={idx}>{el.toUpperCase()}</span>
                         } else {
-                            // If not, display a "-"
                             return <span className="displayLetter" key={idx}> - </span>
                         }
                     })}

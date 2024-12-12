@@ -9,19 +9,20 @@ import GuessesDisplay from "./GuessesDisplay";
 import InputField from "./InputField";
 import GameOver from "./GameOver";
 import { Col, Container, Row } from 'react-bootstrap';
+import MobileKeyboard from './MobileKeyboard';
 
 export default function HangmanGame() {
-    //! WILL IMPLEMENT THIS AT A LATER DATE 
-   // const element = document.getElementById('gameOverMsg') // for scroll effect on game completion
+
+    const [isWide, setIsWide] = useState(window.innerWidth < 1200)
+    useEffect(() => {
+        function handleResize() {
+            setIsWide(window.innerWidth < 547 || window.innerHeight < 547);
+        }
+        window.addEventListener('resize', handleResize);
+        handleResize();
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
     
-    //
-    // const scrollEffect = (el) => {
-    //     el?.scrollIntoView({
-    //         behavior: 'smooth'
-    //     });
-    // } 
-
-
     const { word, newWord } = useContext(WordContext)
     
     // Keep track of correctly guessed letters 
@@ -58,12 +59,6 @@ export default function HangmanGame() {
             setGameComplete(true);
     }, [correctGuesses, word])
 
-    // useEffect(() => {
-    //     if(wrongGuessCount === 10) {
-    //         scrollEffect(element)
-    //     }
-    // }, [wrongGuessCount])
-
     function resetGame() {
         setWrongGuessCount(0);
         setIncorrectGuesses([]);
@@ -76,14 +71,17 @@ export default function HangmanGame() {
     return (
         <Container fluid>
             <HangmanDisplay currentState={ wrongGuessCount } />
-            <Row id='dualCol-flex'>
-                <Col>
-                    <InputField userSubmit = { userSubmit } gameStatus={ gameComplete } hangmanDisplayState={wrongGuessCount} gameReset={resetGame}/>
-                </Col>
-                <Col className='mx-auto'>
-                    <GuessesDisplay characters={ incorrectGuesses }/>
-                </Col>
-            </Row>
+            {!isWide && 
+                <Row id='dualCol-flex'>
+                    <Col>
+                        <InputField userSubmit = { userSubmit } gameStatus={ gameComplete } hangmanDisplayState={wrongGuessCount} gameReset={resetGame}/>
+                    </Col>
+                    <Col className='mx-auto'>
+                        <GuessesDisplay characters={ incorrectGuesses }/>
+                    </Col>
+                </Row>
+            }
+            {isWide && <MobileKeyboard userSubmit={userSubmit} gameStatus={gameComplete} hangmanDisplayState={wrongGuessCount} gameReset={resetGame}/>}
             <Row style={{marginTop: "20px"}}> 
                 <Col>
                     <WordDisplay correctGuesses={ correctGuesses } word={ word } />

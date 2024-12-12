@@ -1,6 +1,4 @@
 .hangmanImage {
-    width: 150px;
-    max-height: 150px;
     border-radius: 4px;
     opacity: 0.6;
     transition: all ease-in-out 0.5s;
